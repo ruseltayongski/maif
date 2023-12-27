@@ -61,7 +61,7 @@
         var path_gif = "{{ asset('images/loading.gif') }}";
         var loading = '<center><img src="'+path_gif+'" alt=""></center>';
         
-
+      
         @if(session('facility_save'))
              <?php session()->forget('facility_save'); ?>
              Lobibox.notify('success', {
@@ -85,6 +85,24 @@
             Lobibox.notify('success', {
                 msg: 'Successfully saved Fund Source!'
             });
+        @endif
+        @if(session('fundsource_update'))
+            <?php session()->forget('fundsource_update'); ?>
+            Lobibox.notify('success', {
+                msg: 'Successfully Upate Fund Source!'
+            });
+        @endif
+        @if(session('dv_create'))
+           <?php session()->forget('dv_create'); ?>
+           Lobibox.notify('success', {
+              msg: 'Disbursement was Created!'
+           });
+        @endif
+        @if(session('dv_update'))
+           <?php session()->forget('dv_create'); ?>
+           Lobibox.notify('success', {
+              msg: 'Disbursement was updated!'
+           });
         @endif
     </script>
 

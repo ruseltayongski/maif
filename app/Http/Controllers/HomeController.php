@@ -11,6 +11,7 @@ use App\Models\Barangay;
 use App\Models\Fundsource;
 use App\Models\Proponent;
 use App\Models\ProponentInfo;
+use App\Models\Users;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,6 +32,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
     public function index(Request $request)
     {
         $patients = Patients::
@@ -123,7 +126,7 @@ class HomeController extends Controller
                                         );
                                     },
                                     'fundsource',
-                                ])
+                                ])->orderBy('updated_at', 'desc')
                                 ->first();
 
                                 $municipal = Muncity::select('id', 'description')->get();
@@ -221,5 +224,12 @@ class HomeController extends Controller
 
         return view('maif.Disbursement.disbursement');
     }
+
+    public function dv(){
+
+        return view('dv.dv');
+    }
+
+ 
 
 }
